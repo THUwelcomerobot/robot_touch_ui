@@ -1,6 +1,9 @@
 <RCC>
     <qresource prefix="/image">
-        <file>image/anti_CW.jpg</file>
-        <file>image/CW.jpg</file>
+        <file>image/anti_CW.png</file>
+        <file>image/CW.png</file>
+        <file>image/slider_handle.png</file>
+        <file>image/slider_background.png</file>
+        <file>image/slider_handle_pressed.png</file>
     </qresource>
 </RCC>

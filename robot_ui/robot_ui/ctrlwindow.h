@@ -4,7 +4,6 @@
 #include <QMainWindow>
 #include <QApplication>
 #include <QPushButton>
-#include <QStringLiteral>
 #include <QDialog>
 #include <QProcess>
 #include <QSlider>
@@ -23,6 +22,7 @@ public:
     QPushButton *ctrl_up;
     QPushButton *ctrl_CW;
     QPushButton *ctrl_anti_CW;
+    QPushButton *ctrl_stop;
 
     QPushButton *exit;
 
@@ -40,6 +40,7 @@ public slots:
     void run_left();
     void run_right();
     void run_up();
+    void stop_run();
 
 };
 
