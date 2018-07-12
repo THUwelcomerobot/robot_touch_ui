@@ -31,3 +31,6 @@ SOURCES += \
 HEADERS += \
         mainwindow.h \
     ctrlwindow.h
+
+RESOURCES += \
+    rec.qrc

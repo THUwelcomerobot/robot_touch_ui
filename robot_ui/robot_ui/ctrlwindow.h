@@ -8,6 +8,8 @@
 #include <QDialog>
 #include <QProcess>
 #include <QSlider>
+#include <QLabel>
+#include <QSpinBox>
 
 class CtrlWindow : public QDialog
 {
@@ -19,9 +21,15 @@ public:
     QPushButton *ctrl_left;
     QPushButton *ctrl_right;
     QPushButton *ctrl_up;
+    QPushButton *ctrl_CW;
+    QPushButton *ctrl_anti_CW;
+
     QPushButton *exit;
 
     QSlider *ctrl_speed;
+
+    QSpinBox *watch_speed;
+    QLabel *tip_speed;
 
     CtrlWindow(QWidget *parent = 0);
     ~CtrlWindow();
