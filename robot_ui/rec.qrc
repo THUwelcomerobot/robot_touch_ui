@@ -1,0 +1,20 @@
+<RCC>
+    <qresource prefix="/image">
+        <file>image/anti_CW.png</file>
+        <file>image/CW.png</file>
+        <file>image/slider_handle.png</file>
+        <file>image/slider_background.png</file>
+        <file>image/slider_handle_pressed.png</file>
+        <file>image/start.png</file>
+        <file>image/start_pressed.png</file>
+        <file>image/ctrl_icon_border.png</file>
+        <file>image/title.png</file>
+        <file>image/background.png</file>
+        <file>image/icon_chat.png</file>
+        <file>image/icon_ctrl.png</file>
+        <file>image/icon_func.png</file>
+        <file>image/icon_image.png</file>
+        <file>image/tool_back.png</file>
+        <file>image/tool_close.png</file>
+    </qresource>
+</RCC>
