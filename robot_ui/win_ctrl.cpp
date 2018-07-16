@@ -50,7 +50,7 @@ void CtrlWindow::initwindow()
     watch_speed->setGeometry(610, 150, 80, 40);
     watch_speed->setStyleSheet(QString("QSpinBox{font-size:25px;}"));
     tip_speed = new QLabel(this);
-    tip_speed->setText(QStringLiteral("Current Speed:"));
+    tip_speed->setText(QString("Current Speed:"));
     tip_speed->setGeometry(420, 150, 280, 40);
     tip_speed->setStyleSheet(QString("QLabel{font-size:25px;}"));
 
@@ -84,7 +84,7 @@ void CtrlWindow::initwindow()
     ctrl_stop->setStyleSheet(QString(ctrl_button_style).append("QPushButton{border-radius:70px;"
                                                                "font-size:25px;}"));
     exit = new QPushButton(this);
-    exit->setText(QStringLiteral("Back"));
+    exit->setText(QString("Back"));
     exit->setGeometry(60, 100, 120, 80);
     exit->setStyleSheet(QString(ctrl_button_style).append("QPushButton{border-radius:40px;"
                                                           "font-size:25px;}"));
@@ -96,6 +96,10 @@ void CtrlWindow::initwindow()
     QObject::connect(ctrl_left, SIGNAL(released()), this, SLOT(stop_run()));
     QObject::connect(ctrl_right, SIGNAL(pressed()), this, SLOT(run_right()));
     QObject::connect(ctrl_right, SIGNAL(released()), this, SLOT(stop_run()));
+    QObject::connect(ctrl_CW, SIGNAL(pressed()), this, SLOT(run_CW()));
+    QObject::connect(ctrl_CW, SIGNAL(released()), this, SLOT(stop_run()));
+    QObject::connect(ctrl_anti_CW, SIGNAL(pressed()), this, SLOT(run_anti_CW()));
+    QObject::connect(ctrl_anti_CW, SIGNAL(released()), this, SLOT(stop_run()));
     QObject::connect(exit, SIGNAL(clicked(bool)), this, SLOT(close()));
     QObject::connect(ctrl_speed, SIGNAL(valueChanged(int)), watch_speed, SLOT(setValue(int)));
     QObject::connect(watch_speed, SIGNAL(valueChanged(int)), ctrl_speed, SLOT(setValue(int)));
@@ -104,30 +108,41 @@ void CtrlWindow::initwindow()
 
 void CtrlWindow::openwindow()
 {
+        system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash; roslaunch wpb_home_bringup minimal.launch ;bash'&");
     this->show();
+    this->move((QApplication::desktop()->width() - this->width())/2,(QApplication::desktop()->height() - this->height())/2);
 }
-
 void CtrlWindow::run_down()
 {
-
+     system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[-0.1,0.0,0.0]' '[0.0,0.0,0.0]';pkill -2 rostopic;exit;bash'");
 }
 
 void CtrlWindow::run_left()
 {
-
+    system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[-0.0,0.1,0.0]' '[0.0,0.0,0.0]';bash'");
 }
 
 void CtrlWindow::run_right()
 {
-
+    system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[-0.0,-0.1,0.0]' '[0.0,0.0,0.0]';bash'");
 }
 
 void CtrlWindow::run_up()
 {
+    system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[0.1,0.0,0.0]' '[0.0,0.0,0.0]';bash'");
+}
 
+void CtrlWindow::run_CW()
+{
+      system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[0.0,0.0,0.0]' '[0.0,0.0,-0.1]';bash'");
+}
+
+void CtrlWindow::run_anti_CW()
+{
+      system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[0.0,0.0,0.0]' '[0.0,0.0,0.1]';bash'");
 }
 
 void CtrlWindow::stop_run()
 {
-
+    system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[-0.0,0.0,0.0]' '[0.0,0.0,0.0]';bash'");
 }

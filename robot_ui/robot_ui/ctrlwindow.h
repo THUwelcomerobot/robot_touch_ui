@@ -36,6 +36,8 @@ public:
 
 
 public slots:
+    void close_window();
+
     void run_down();
     void run_left();
     void run_right();

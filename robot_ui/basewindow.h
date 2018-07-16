@@ -5,6 +5,8 @@
 #include <QToolBar>
 #include <QAction>
 #include <QDialog>
+#include <QApplication>
+#include <QDesktopWidget>
 #include <QMessageBox>
 #include <QPropertyAnimation>
 #include <QParallelAnimationGroup>

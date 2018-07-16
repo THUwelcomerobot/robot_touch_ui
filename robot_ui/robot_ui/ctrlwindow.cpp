@@ -1,6 +1,8 @@
 #include "ctrlwindow.h"
 #include <QDebug>
 
+int max_speed = 1;
+
 QString ctrl_button_style = "QPushButton{border:4px groove gray; border-radius:60px; padding:2px 4px;"
                             "background-repeat:no-repeat; background-position:center;"
                             "font-size:50px; font-weight:bold;;}"
@@ -101,8 +103,9 @@ CtrlWindow::CtrlWindow(QWidget *parent)
     QObject::connect(ctrl_left, SIGNAL(released()), this, SLOT(stop_run()));
     QObject::connect(ctrl_right, SIGNAL(pressed()), this, SLOT(run_right()));
     QObject::connect(ctrl_right, SIGNAL(released()), this, SLOT(stop_run()));
-    QObject::connect(exit, SIGNAL(clicked(bool)), this, SLOT(close()));
+    QObject::connect(exit, SIGNAL(clicked(bool)), this, SLOT(close_window()));
     QObject::connect(ctrl_speed, SIGNAL(valueChanged(int)), watch_speed, SLOT(setValue(int)));
+    QObject::connect(ctrl_stop, SIGNAL(clicked(bool)), this, SLOT(stop_run()));
 }
 
 CtrlWindow::~CtrlWindow()
@@ -110,14 +113,24 @@ CtrlWindow::~CtrlWindow()
 
 }
 
+void CtrlWindow::close_window()
+{
+    this->close();
+    system("gnome-terminal -x bash -c 'pkill -2 roslaunch'");
+}
+
 void CtrlWindow::run_down()
 {
+    QString ctrl;
+//    ctrl.append("gnome-terminal -x bash -c 'rostopic pub  rostopic pub /cmd_vel geometry_msgs/Twist '[");
+//    ctrl.append(QString::number(watch_speed->value()/100*max_speed));
+    system("gnome-terminal -x bash -c 'rostopic pub  rostopic pub /cmd_vel geometry_msgs/Twist '[-0.2,0.0,0.0]' '[0.0,0.0,0.0]''");
 
 }
 
 void CtrlWindow::run_left()
 {
-
+//    system("gnome-terminal -x bash -c 'pkill -2 roscore'");
 }
 
 void CtrlWindow::run_right()
@@ -132,5 +145,5 @@ void CtrlWindow::run_up()
 
 void CtrlWindow::stop_run()
 {
-
+    system("gnome-terminal -x bash -c 'pkill -2 rostopic'");
 }

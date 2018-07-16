@@ -28,6 +28,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::open_ctrl_window()
 {
+    system("gnome-terminal -x bash -c 'source ~/.bashrc;roscore'&");
     ctrl_window = new CtrlWindow(this);
     ctrl_window->show();
+//    system("gnome-terminal -x bash -c 'source ~/.bashrc;roslaunch wpb_home_bringup touch_pad_ctrl.launch '");
+
+
 }

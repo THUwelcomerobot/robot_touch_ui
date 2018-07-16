@@ -35,6 +35,8 @@ public slots:
     void run_left();
     void run_right();
     void run_up();
+    void run_CW();
+    void run_anti_CW();
     void stop_run();
 };
 

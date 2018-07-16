@@ -19,6 +19,7 @@ public:
 signals:
     void login_success();
 public slots:
+    void openwindow();
     void login();
     void emit_success();
     void logout();
