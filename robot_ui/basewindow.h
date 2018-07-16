@@ -5,6 +5,10 @@
 #include <QToolBar>
 #include <QAction>
 #include <QDialog>
+#include <QMessageBox>
+#include <QPropertyAnimation>
+#include <QParallelAnimationGroup>
+#include <QSequentialAnimationGroup>
 
 class BaseWindow : public QDialog
 {
@@ -20,6 +24,9 @@ public:
     ~BaseWindow();
     virtual void initwindow();
     void initToolBar();
+public slots:
+    virtual void openwindow();
+    void quit();
 };
 
 #endif // BASEWINDOW_H

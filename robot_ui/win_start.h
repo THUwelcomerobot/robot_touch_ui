@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QPushButton>
+#include <QLabel>
 
 class StartWindow : public QMainWindow
 {
@@ -11,12 +12,16 @@ class StartWindow : public QMainWindow
 public:
 
     QPushButton *startAll;
+    QLabel *loading;
 
     StartWindow(QWidget *parent = 0);
     ~StartWindow();
-
+signals:
+    void login_success();
 public slots:
     void login();
+    void emit_success();
+    void logout();
 
 };
 

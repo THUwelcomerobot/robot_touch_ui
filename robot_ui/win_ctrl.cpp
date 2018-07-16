@@ -4,8 +4,8 @@
 QString ctrl_button_style = "QPushButton{border:4px groove gray; border-radius:60px; padding:2px 4px;"
                             "background-repeat:no-repeat; background-position:center;"
                             "font-size:50px; font-weight:bold;;}"
-                            "QPushButton:hover{background-color:rgb(240,248,255);}"
-                            "QPushButton:pressed{background-color:rgb(225,245,255);}";
+                            "QPushButton:hover{background-color:rgb(200,235,255);}"
+                            "QPushButton:pressed{background-color:rgb(150,210,255);}";
 QString slider_style = "QSlider::groove:horizontal{"
                        "border-image:url(:/image/image/slider_background.png);"
                        "border-radius:20px;"
@@ -100,6 +100,11 @@ void CtrlWindow::initwindow()
     QObject::connect(ctrl_speed, SIGNAL(valueChanged(int)), watch_speed, SLOT(setValue(int)));
     QObject::connect(watch_speed, SIGNAL(valueChanged(int)), ctrl_speed, SLOT(setValue(int)));
     QObject::connect(ctrl_stop, SIGNAL(clicked(bool)), this, SLOT(stop_run()));
+}
+
+void CtrlWindow::openwindow()
+{
+    this->show();
 }
 
 void CtrlWindow::run_down()

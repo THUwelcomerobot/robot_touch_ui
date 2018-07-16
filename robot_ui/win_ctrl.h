@@ -30,6 +30,7 @@ public:
     void initwindow();
 
 public slots:
+    void openwindow();
     void run_down();
     void run_left();
     void run_right();

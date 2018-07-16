@@ -9,6 +9,10 @@ class FuncWindow : public BaseWindow
 
 public:
 
+    QPushButton *func1;
+    QPushButton *func2;
+    QPushButton *func3;
+
     FuncWindow(int Width = 800, int Height = 600, QWidget *parent = 0);
     ~FuncWindow();
     void initwindow();

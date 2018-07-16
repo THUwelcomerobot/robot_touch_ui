@@ -13,5 +13,8 @@ ImageWindow::~ImageWindow()
 
 void ImageWindow::initwindow()
 {
-
+    QPixmap back_image = QPixmap(":/image/image/background.png").scaled(this->size());
+    QPalette palette(this->palette());
+    palette.setBrush(QPalette::Background, QBrush(back_image));
+    this->setPalette(palette);
 }
