@@ -1,5 +1,6 @@
 #include "win_ctrl.h"
 #include <QDebug>
+#include <QString>
 
 QString ctrl_button_style = "QPushButton{border:4px groove gray; border-radius:60px; padding:2px 4px;"
                             "background-repeat:no-repeat; background-position:center;"
@@ -48,6 +49,7 @@ void CtrlWindow::initwindow()
     watch_speed->setMaximum(100);
     watch_speed->setValue(30);
     watch_speed->setGeometry(610, 150, 80, 40);
+
     watch_speed->setStyleSheet(QString("QSpinBox{font-size:25px;}"));
     tip_speed = new QLabel(this);
     tip_speed->setText(QString("Current Speed:"));
@@ -100,49 +102,113 @@ void CtrlWindow::initwindow()
     QObject::connect(ctrl_CW, SIGNAL(released()), this, SLOT(stop_run()));
     QObject::connect(ctrl_anti_CW, SIGNAL(pressed()), this, SLOT(run_anti_CW()));
     QObject::connect(ctrl_anti_CW, SIGNAL(released()), this, SLOT(stop_run()));
-    QObject::connect(exit, SIGNAL(clicked(bool)), this, SLOT(close()));
+    QObject::connect(exit, SIGNAL(clicked(bool)), this, SLOT(myclose()));
     QObject::connect(ctrl_speed, SIGNAL(valueChanged(int)), watch_speed, SLOT(setValue(int)));
     QObject::connect(watch_speed, SIGNAL(valueChanged(int)), ctrl_speed, SLOT(setValue(int)));
     QObject::connect(ctrl_stop, SIGNAL(clicked(bool)), this, SLOT(stop_run()));
+//    QObject::connect()
 }
 
 void CtrlWindow::openwindow()
 {
-        system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash; roslaunch wpb_home_bringup minimal.launch ;bash'&");
+    system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash; roslaunch wpb_home_bringup minimal.launch ;bash'&");
     this->show();
     this->move((QApplication::desktop()->width() - this->width())/2,(QApplication::desktop()->height() - this->height())/2);
 }
 void CtrlWindow::run_down()
 {
-     system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[-0.1,0.0,0.0]' '[0.0,0.0,0.0]';pkill -2 rostopic;exit;bash'");
+    QString a="gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[-";
+    QString b = ",0.0,0.0]' '[0.0,0.0,0.0]';bash'";
+     system((a+QString::number(watch_speed->value()*0.002)+b).toStdString().c_str());
 }
 
 void CtrlWindow::run_left()
 {
-    system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[-0.0,0.1,0.0]' '[0.0,0.0,0.0]';bash'");
+    QString a = "gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[-0.0,";
+    QString b = ",0.0]' '[0.0,0.0,0.0]';bash'";
+    system((a+QString::number(watch_speed->value()*0.002)+b).toStdString().c_str());
 }
 
 void CtrlWindow::run_right()
 {
-    system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[-0.0,-0.1,0.0]' '[0.0,0.0,0.0]';bash'");
+    QString a = "gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[-0.0,-";
+    QString b = ",0.0]' '[0.0,0.0,0.0]';bash'";
+    system((a+QString::number(watch_speed->value()*0.002)+b).toStdString().c_str());
 }
 
 void CtrlWindow::run_up()
 {
-    system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[0.1,0.0,0.0]' '[0.0,0.0,0.0]';bash'");
+    QString a ="gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[";
+    QString b = ",0.0,0.0]' '[0.0,0.0,0.0]';bash'";
+    system((a+QString::number(watch_speed->value()*0.002)+b).toStdString().c_str());
 }
 
 void CtrlWindow::run_CW()
 {
-      system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[0.0,0.0,0.0]' '[0.0,0.0,-0.1]';bash'");
+    QString a ="gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[0.0,0.0,0.0]' '[0.0,0.0,-";
+    QString b ="]';bash'";
+    system((a+QString::number(watch_speed->value()*0.002)+b).toStdString().c_str());
 }
 
 void CtrlWindow::run_anti_CW()
 {
-      system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[0.0,0.0,0.0]' '[0.0,0.0,0.1]';bash'");
+    QString a ="gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[0.0,0.0,0.0]' '[0.0,0.0,";
+    QString b = "]';bash'";
+      system((a+QString::number(watch_speed->value()*0.002)+b).toStdString().c_str());
 }
 
 void CtrlWindow::stop_run()
 {
     system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[-0.0,0.0,0.0]' '[0.0,0.0,0.0]';bash'");
+}
+
+void CtrlWindow::myclose()
+{
+     system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 roslaunch;pkill -2 rostopic;bash'");
+     system("gnome-terminal -x bash -c 'killall bash'");
+     this->close();
+}
+
+CtrlDialog::CtrlDialog(int Width, int Height, QWidget *parent)
+    : BaseWindow(Width, Height, parent)
+{
+    initwindow();
+}
+
+CtrlDialog::~CtrlDialog()
+{
+
+}
+
+void CtrlDialog::initwindow()
+{
+    js_ctrl = new QPushButton(this);
+    js_ctrl->setGeometry(this->width()/2-100, this->height()/2-75, 200, 75);
+    scr_ctrl = new QPushButton(this);
+    scr_ctrl->setGeometry(this->width()/2-100, this->height()/2+50, 200, 75);
+    QObject::connect(js_ctrl, SIGNAL(clicked(bool)), this, SLOT(js_control()));
+    QObject::connect(scr_ctrl, SIGNAL(clicked(bool)), this, SLOT(scr_control()));
+}
+
+void CtrlDialog::openwindow()
+{
+    this->show();
+    this->move((QApplication::desktop()->width() - this->width())/2,(QApplication::desktop()->height() - this->height())/2);
+}
+
+void CtrlDialog::js_control()
+{
+    system("");
+    if (QMessageBox::Yes == QMessageBox::question(this,
+                                                  tr("手柄控制进行中..."),
+                                                  tr("点击确定按钮退出手柄控制"),
+                                                  QMessageBox::Yes, QMessageBox::Yes))
+    {
+        system("");
+    }
+}
+
+void CtrlDialog::scr_control()
+{
+    this->close();
 }

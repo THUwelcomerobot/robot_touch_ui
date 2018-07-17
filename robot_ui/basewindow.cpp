@@ -52,8 +52,10 @@ void BaseWindow::quit()
                                                   QMessageBox::Yes | QMessageBox::No,
                                                   QMessageBox::No))
     {
+       system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 roslaunch;pkill -2 rosrun;pkill -2 gnome-terminal;bash'");
+     system("gnome-terminal -x bash -c 'killall bash'");
         this->close();
-            system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 roslaunch;pkill -2 rosrun;pkill -2 gnome-terminal;bash'");
+
     }
 
 }

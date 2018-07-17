@@ -6,12 +6,29 @@
 #include <QLabel>
 #include <QSpinBox>
 
+
+class CtrlDialog : public BaseWindow
+{
+    Q_OBJECT
+
+public:
+    QPushButton *js_ctrl;
+    QPushButton *scr_ctrl;
+
+    CtrlDialog(int Width = 400, int Height = 400, QWidget *parent = 0);
+    ~CtrlDialog();
+    void initwindow();
+public slots:
+    void openwindow();
+    void js_control();
+    void scr_control();
+};
+
 class CtrlWindow : public BaseWindow
 {
     Q_OBJECT
 
 public:
-
     QPushButton *ctrl_down;
     QPushButton *ctrl_left;
     QPushButton *ctrl_right;
@@ -38,6 +55,8 @@ public slots:
     void run_CW();
     void run_anti_CW();
     void stop_run();
+    void myclose();
 };
+
 
 #endif // CTRLWINDOW_H

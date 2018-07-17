@@ -18,3 +18,10 @@ void ChatWindow::initwindow()
     palette.setBrush(QPalette::Background, QBrush(back_image));
     this->setPalette(palette);
 }
+
+void ChatWindow::openwindow()
+{
+    this->show();
+    this->move((QApplication::desktop()->width() - this->width())/2,(QApplication::desktop()->height() - this->height())/2);
+    system("");//启动语言对话
+}
