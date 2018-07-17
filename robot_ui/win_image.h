@@ -16,10 +16,13 @@ public:
     QPushButton *button5;
     QPushButton *button6;
 
+    QLabel *filter;
+    QLabel *makeup;
+    QLabel *similarity;
     QLabel *image;
     QLabel *text;
 
-    ImageWindow(int Width = 800, int Height = 600, QWidget *parent = 0);
+    ImageWindow(int Width = 1600, int Height = 1200, QWidget *parent = 0);
     ~ImageWindow();
     void initwindow();
 public slots:

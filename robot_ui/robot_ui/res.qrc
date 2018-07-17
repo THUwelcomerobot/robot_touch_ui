@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/image">
-        <file>image/anti_CW.jpg</file>
-        <file>image/CW.jpg</file>
-    </qresource>
-</RCC>

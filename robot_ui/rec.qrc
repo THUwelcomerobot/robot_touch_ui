@@ -20,5 +20,17 @@
         <file>image/text_chat.png</file>
         <file>image/text_image.png</file>
         <file>image/icon_person.png</file>
+        <file>image/icon_face1.png</file>
+        <file>image/icon_face2.png</file>
+        <file>image/icon_face3.png</file>
+        <file>image/icon_face4.png</file>
+        <file>image/icon_face5.png</file>
+        <file>image/icon_face6.png</file>
+        <file>image/ctrl_icon_border.png</file>
+        <file>image/text_image_func2.png</file>
+        <file>image/text_image_func3.png</file>
+        <file>image/text_image_func1.png</file>
+        <file>image/chat_support.png</file>
+        <file>image/chat_support_text.png</file>
     </qresource>
 </RCC>
