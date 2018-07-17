@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
     QObject::connect(w_chat->back, SIGNAL(triggered(bool)), w_main, SLOT(openwindow()));
     QObject::connect(w_func->back, SIGNAL(triggered(bool)), w_main, SLOT(openwindow()));
 
-    w_main->openwindow();
+    w_start->openwindow();
 
     return a.exec();
 

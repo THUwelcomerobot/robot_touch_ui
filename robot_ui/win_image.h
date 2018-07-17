@@ -26,12 +26,14 @@ public:
     ~ImageWindow();
     void initwindow();
 public slots:
+    void openwindow();
     void face1();
     void face2();
     void face3();
     void face4();
     void face5();
     void face6();
+    void myclose();
 };
 
 #endif // IMAGEWINDOW_H

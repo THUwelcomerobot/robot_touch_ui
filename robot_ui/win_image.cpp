@@ -61,7 +61,7 @@ void ImageWindow::initwindow()
     text->setGeometry(600, 800, 900, 200);
 //    text->setText("text");
     text->setStyleSheet("QLabel{font-size:40px;}");
-
+    QObject::connect(back, SIGNAL(triggered(bool)), this, SLOT(myclose()));
     QObject::connect(button1, SIGNAL(clicked(bool)), this, SLOT(face1()));
     QObject::connect(button2, SIGNAL(clicked(bool)), this, SLOT(face2()));
     QObject::connect(button3, SIGNAL(clicked(bool)), this, SLOT(face3()));
@@ -70,9 +70,21 @@ void ImageWindow::initwindow()
     QObject::connect(button6, SIGNAL(clicked(bool)), this, SLOT(face6()));
 }
 
+void ImageWindow::openwindow()
+{
+    this->show();
+    this->move((QApplication::desktop()->width() - this->width())/2,(QApplication::desktop()->height() - this->height())/2);
+    system("gnome-terminal -x bash -c 'cp /home/robot/share/img/0.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;"
+           "cp /home/robot/share/img/1.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;"
+           "cp /home/robot/share/img/2.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;"
+           "cp /home/robot/share/img/3.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;"
+           "cp /home/robot/share/img/makeup.png /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;"
+           "cp /home/robot/share/img/likely_face.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;bash'&");
+}
+
 void ImageWindow::face1()
 {
-    system("gnome-terminal -x bash -c 'cp /home/robot/share/img/0.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;bash'&");
+//    system("gnome-terminal -x bash -c 'cp /home/robot/share/img/0.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;bash'&");
     QPainter painter(image);
     QString filepath = "/home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/0.jpg";
     QPixmap face_image = QPixmap(filepath).scaled(image->size());
@@ -88,7 +100,7 @@ void ImageWindow::face1()
 
 void ImageWindow::face2()
 {
-    system("gnome-terminal -x bash -c 'cp /home/robot/share/img/1.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;bash'&");
+//    system("gnome-terminal -x bash -c 'cp /home/robot/share/img/1.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;bash'&");
     QPainter painter(image);
     QString filepath = "/home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/1.jpg";
     QPixmap face_image = QPixmap(filepath).scaled(image->size());
@@ -99,7 +111,7 @@ void ImageWindow::face2()
 
 void ImageWindow::face3()
 {
-    system("gnome-terminal -x bash -c 'cp /home/robot/share/img/2.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;bash'&");
+//    system("gnome-terminal -x bash -c 'cp /home/robot/share/img/2.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;bash'&");
     QPainter painter(image);
     QString filepath = "/home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/2.jpg";
     QPixmap face_image = QPixmap(filepath).scaled(image->size());
@@ -110,7 +122,7 @@ void ImageWindow::face3()
 
 void ImageWindow::face4()
 {
-    system("gnome-terminal -x bash -c 'cp /home/robot/share/img/3.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;bash'&");
+//    system("gnome-terminal -x bash -c 'cp /home/robot/share/img/3.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;bash'&");
     QPainter painter(image);
     QString filepath = "/home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/3.jpg";
     QPixmap face_image = QPixmap(filepath).scaled(image->size());
@@ -121,7 +133,7 @@ void ImageWindow::face4()
 
 void ImageWindow::face5()
 {
-    system("gnome-terminal -x bash -c 'cp /home/robot/share/makeup.png /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;bash'&");
+//    system("gnome-terminal -x bash -c 'cp /home/robot/share/makeup.png /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;bash'&");
     QPainter painter(image);
     QString filepath = "/home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/makeup.png";
     QPixmap face_image = QPixmap(filepath).scaled(350, 400);
@@ -133,7 +145,7 @@ void ImageWindow::face5()
 
 void ImageWindow::face6()
 {
-    system("gnome-terminal -x bash -c 'cp /home/robot/share/likely_face.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;bash'&");
+//    system("gnome-terminal -x bash -c 'cp /home/robot/share/likely_face.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;bash'&");
     //读取良缘照片(资源文件中)
     QPainter painter(image);
     QString filepath = "/home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/likely_face.jpg";
@@ -150,4 +162,11 @@ void ImageWindow::face6()
     QTextStream txtInput(&readfile);
     text->setText(QString("与您脸缘最好的老师/同学是：").append(txtInput.readAll()));
     update();
+}
+
+void ImageWindow::myclose()
+{
+    system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 roslaunch;pkill -2 rostopic;bash'");
+    system("gnome-terminal -x bash -c 'killall bash'");
+    this->close();
 }
