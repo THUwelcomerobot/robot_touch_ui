@@ -1,6 +1,7 @@
 #include "win_image.h"
 #include <QFile>
 #include <QDebug>
+#include <QPainter>
 
 QString facebutton_style = "QPushButton{border-radius:100px; background-repeat:no-repeat; background-position:center;}"
                            "QPushButton:hover{background-color:rgb(225,245,255);}"
@@ -54,11 +55,11 @@ void ImageWindow::initwindow()
     similarity->setStyleSheet(QString("background-image:url(:/image/image/text_image_func3);"));
 
     image = new QLabel(this);
-    image->setGeometry(600, 200, 900, 700);
-    image->setText("image");
+    image->setGeometry(600, 200, 900, 500);
+//    image->setText("image");
     text = new QLabel(this);
     text->setGeometry(600, 800, 900, 200);
-    text->setText("text");
+//    text->setText("text");
     text->setStyleSheet("QLabel{font-size:40px;}");
 
     QObject::connect(button1, SIGNAL(clicked(bool)), this, SLOT(face1()));
@@ -71,52 +72,76 @@ void ImageWindow::initwindow()
 
 void ImageWindow::face1()
 {
-    QString filepath = ":/image/image/icon_face1.png";
-    image->setStyleSheet(QString("background-repeat:no-repeat; background-position:center;"
-                                 "background-image:url(").append(filepath).append(");"));
+    system("gnome-terminal -x bash -c 'cp /home/robot/share/img/0.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;bash'&");
+    QPainter painter(image);
+    QString filepath = "/home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/0.jpg";
+    QPixmap face_image = QPixmap(filepath).scaled(image->size());
+    image->setPixmap(face_image);
+//    QPalette palette(image->palette());
+//    palette.setBrush(QPalette::Background, QBrush(face_image));
+//    image->setPalette(palette);
+//    image->setStyleSheet(QString("background-repeat:no-repeat; background-position:center;"
+//                                 "background-image:url(").append(filepath).append(");"));
+    text->setText("");
     update();
 }
 
 void ImageWindow::face2()
 {
-    QString filepath = ":/image/image/icon_face2.png";
-    image->setStyleSheet(QString("background-repeat:no-repeat; background-position:center;"
-                                 "background-image:url(").append(filepath).append(");"));
+    system("gnome-terminal -x bash -c 'cp /home/robot/share/img/1.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;bash'&");
+    QPainter painter(image);
+    QString filepath = "/home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/1.jpg";
+    QPixmap face_image = QPixmap(filepath).scaled(image->size());
+    image->setPixmap(face_image);
+    text->setText("");
     update();
 }
 
 void ImageWindow::face3()
 {
-    QString filepath = ":/image/image/icon_face3.png";
-    image->setStyleSheet(QString("background-repeat:no-repeat; background-position:center;"
-                                 "background-image:url(").append(filepath).append(");"));
+    system("gnome-terminal -x bash -c 'cp /home/robot/share/img/2.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;bash'&");
+    QPainter painter(image);
+    QString filepath = "/home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/2.jpg";
+    QPixmap face_image = QPixmap(filepath).scaled(image->size());
+    image->setPixmap(face_image);
+    text->setText("");
     update();
 }
 
 void ImageWindow::face4()
 {
-    QString filepath = ":/image/image/icon_face4.png";
-    image->setStyleSheet(QString("background-repeat:no-repeat; background-position:center;"
-                                 "background-image:url(").append(filepath).append(");"));
+    system("gnome-terminal -x bash -c 'cp /home/robot/share/img/3.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;bash'&");
+    QPainter painter(image);
+    QString filepath = "/home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/3.jpg";
+    QPixmap face_image = QPixmap(filepath).scaled(image->size());
+    image->setPixmap(face_image);
+    text->setText("");
     update();
 }
 
 void ImageWindow::face5()
 {
-    QString filepath = ":/image/image/icon_face5.png";
-    image->setStyleSheet(QString("background-repeat:no-repeat; background-position:center;"
-                                 "background-image:url(").append(filepath).append(");"));
+    system("gnome-terminal -x bash -c 'cp /home/robot/share/makeup.png /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;bash'&");
+    QPainter painter(image);
+    QString filepath = "/home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/makeup.png";
+    QPixmap face_image = QPixmap(filepath).scaled(350, 400);
+    image->setPixmap(face_image);
+    image->setAlignment(Qt::AlignCenter);
+    text->setText("");
     update();
 }
 
 void ImageWindow::face6()
 {
+    system("gnome-terminal -x bash -c 'cp /home/robot/share/likely_face.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;bash'&");
     //读取良缘照片(资源文件中)
-    QString filepath = ":/image/image/icon_face6.png";
-    image->setStyleSheet(QString("background-repeat:no-repeat; background-position:center;"
-                                 "background-image:url(").append(filepath).append(");"));
+    QPainter painter(image);
+    QString filepath = "/home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/likely_face.jpg";
+    QPixmap face_image = QPixmap(filepath).scaled(300, 400);
+    image->setPixmap(face_image);
+    image->setAlignment(Qt::AlignCenter);
     //读取良缘姓名
-    QString filename = "/home/robot/share/result.txt";
+    QString filename = "/home/robot/share/result_2.txt";
     QFile readfile(filename);
     if (!readfile.open(QIODevice::ReadOnly))
     {

@@ -184,8 +184,12 @@ void CtrlDialog::initwindow()
 {
     js_ctrl = new QPushButton(this);
     js_ctrl->setGeometry(this->width()/2-100, this->height()/2-75, 200, 75);
+    js_ctrl->setText(QString("手柄控制"));
+    js_ctrl->setStyleSheet("QPushButton{font-size:20px;}");
     scr_ctrl = new QPushButton(this);
     scr_ctrl->setGeometry(this->width()/2-100, this->height()/2+50, 200, 75);
+    scr_ctrl->setText(QString("触屏控制"));
+    scr_ctrl->setStyleSheet("QPushButton{font-size:20px;}");
     QObject::connect(js_ctrl, SIGNAL(clicked(bool)), this, SLOT(js_control()));
     QObject::connect(scr_ctrl, SIGNAL(clicked(bool)), this, SLOT(scr_control()));
 }
@@ -198,13 +202,14 @@ void CtrlDialog::openwindow()
 
 void CtrlDialog::js_control()
 {
-    system("");
+    system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;roslaunch wpb_home_bringup js_ctrl.launch;bash'&");
     if (QMessageBox::Yes == QMessageBox::question(this,
                                                   tr("手柄控制进行中..."),
-                                                  tr("点击确定按钮退出手柄控制"),
+                                                  tr("请用手柄进行控制\n点击确定按钮退出手柄控制"),
                                                   QMessageBox::Yes, QMessageBox::Yes))
     {
-        system("");
+        system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 roslaunch;pkill -2 rostopic;bash'");
+        system("gnome-terminal -x bash -c 'killall bash'");
     }
 }
 

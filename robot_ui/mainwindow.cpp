@@ -72,7 +72,7 @@ void MainWindow::openwindow()
 {
     this->show();
     this->move((QApplication::desktop()->width() - this->width())/2,(QApplication::desktop()->height() - this->height())/2);
-    system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 roslaunch;pkill -2 gnome-terminal;exit;bash'");
+
 //    setWindowFlags(Qt::WindowStaysOnTopHint);
     QParallelAnimationGroup *moveall = new QParallelAnimationGroup;
     QPropertyAnimation *move1 = new QPropertyAnimation(vel_ctrl, "pos");
@@ -132,7 +132,7 @@ void MainWindow::openwindow()
 
 void MainWindow::login()
 {
-    QString filename = "/home/robot/share/result.txt";
+    QString filename = "/home/robot/share/result_1.txt";
     QFile readfile(filename);
     if (!readfile.open(QIODevice::ReadOnly))
     {
@@ -141,6 +141,8 @@ void MainWindow::login()
     QTextStream txtInput(&readfile);
     person_name->setText(tr("欢迎您，").append(txtInput.readAll()));
     this->update();
+    system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 roslaunch;pkill -2 gnome-terminal;exit;bash'");
+    system("gnome-terminal -x bash -c 'python /home/robot/share/img_filter.py --imgpath /home/robot/share/0_1o.jpg ;bash'&");
 }
 
 void MainWindow::logout()
