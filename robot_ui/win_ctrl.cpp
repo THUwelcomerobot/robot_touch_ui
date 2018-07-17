@@ -183,13 +183,15 @@ CtrlDialog::~CtrlDialog()
 void CtrlDialog::initwindow()
 {
     js_ctrl = new QPushButton(this);
-    js_ctrl->setGeometry(this->width()/2-100, this->height()/2-75, 200, 75);
-    js_ctrl->setText(QString("手柄控制"));
-    js_ctrl->setStyleSheet("QPushButton{font-size:20px;}");
+    js_ctrl->setGeometry(this->width()/2-150, this->height()/2-100, 300, 100);
+    js_ctrl->setStyleSheet(QString("QPushButton{border-image:url(:/image/image/icon_js_ctrl.png);}"
+                                 "QPushButton:hover{border-image:url(:/image/image/icon_js_hover.png);}"
+                                 "QPushButton:pressed{border-image:url(:/image/image/icon_js_pressed.png);}"));
     scr_ctrl = new QPushButton(this);
-    scr_ctrl->setGeometry(this->width()/2-100, this->height()/2+50, 200, 75);
-    scr_ctrl->setText(QString("触屏控制"));
-    scr_ctrl->setStyleSheet("QPushButton{font-size:20px;}");
+    scr_ctrl->setGeometry(this->width()/2-150, this->height()/2+50, 300, 100);
+    scr_ctrl->setStyleSheet(QString("QPushButton{border-image:url(:/image/image/icon_scr_ctrl.png);}"
+                                    "QPushButton:hover{border-image:url(:/image/image/icon_scr_hover.png);}"
+                                    "QPushButton:pressed{border-image:url(:/image/image/icon_scr_pressed.png);}"));
     QObject::connect(js_ctrl, SIGNAL(clicked(bool)), this, SLOT(js_control()));
     QObject::connect(scr_ctrl, SIGNAL(clicked(bool)), this, SLOT(scr_control()));
 }

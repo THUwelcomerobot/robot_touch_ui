@@ -19,13 +19,15 @@ void FuncWindow::initwindow()
     this->setPalette(palette);
 
     func1 = new QPushButton(this);
-    func1->setGeometry(this->width()/2-250, this->height()/2-100, 200, 200);
-    func1->setText(QString("跟着我"));
-    func1->setStyleSheet("QPushButton{font-size:20px;}");
+    func1->setGeometry(this->width()/2-310, this->height()/2-100, 300, 300);
+    func1->setStyleSheet(QString("QPushButton{border-image:url(:/image/image/icon_func1.png);}"
+                                 "QPushButton:hover{border-image:url(:/image/image/icon_func1_hover.png);}"
+                                 "QPushButton:pressed{border-image:url(:/image/image/icon_func1_pressed.png);}"));
     func2 = new QPushButton(this);
-    func2->setGeometry(this->width()/2+50, this->height()/2-100, 200, 200);
-    func2->setText(QString("位置记忆"));
-    func2->setStyleSheet("QPushButton{font-size:20px;}");
+    func2->setGeometry(this->width()/2+10, this->height()/2-100, 300, 300);
+    func2->setStyleSheet(QString("QPushButton{border-image:url(:/image/image/icon_func2.png);}"
+                                 "QPushButton:hover{border-image:url(:/image/image/icon_func2_hover.png);}"
+                                 "QPushButton:pressed{border-image:url(:/image/image/icon_func2_pressed.png);}"));
     QObject::connect(func1, SIGNAL(clicked(bool)), this, SLOT(function1()));
     QObject::connect(func2, SIGNAL(clicked(bool)), this, SLOT(function2()));
 
