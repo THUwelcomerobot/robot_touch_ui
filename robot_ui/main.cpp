@@ -10,10 +10,10 @@
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
-//    QTextCodec *codec = QTextCodec::codecForName("UTF-8");//情况2
-//    QTextCodec::setCodecForTr(codec);
-//    QTextCodec::setCodecForLocale(codec);
-//    QTextCodec::setCodecForCStrings(codec);
+    QTextCodec *codec = QTextCodec::codecForName("UTF-8");//情况2
+    QTextCodec::setCodecForTr(codec);
+    QTextCodec::setCodecForLocale(codec);
+    QTextCodec::setCodecForCStrings(codec);
     StartWindow *w_start = new StartWindow;
     MainWindow *w_main = new MainWindow;
     CtrlWindow *w_ctrl = new CtrlWindow;
@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
     QObject::connect(w_chat->back, SIGNAL(triggered(bool)), w_main, SLOT(openwindow()));
     QObject::connect(w_func->back, SIGNAL(triggered(bool)), w_main, SLOT(openwindow()));
 
-    w_main->openwindow();
+    w_start->openwindow();
 
     return a.exec();
 

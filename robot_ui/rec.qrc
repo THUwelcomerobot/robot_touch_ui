@@ -52,5 +52,6 @@
         <file>image/likely_face.png</file>
         <file>image/info_icon.png</file>
         <file>image/info_text.png</file>
+        <file>image/chat__text.png</file>
     </qresource>
 </RCC>
