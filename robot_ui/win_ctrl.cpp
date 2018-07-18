@@ -103,6 +103,7 @@ void CtrlWindow::initwindow()
     QObject::connect(ctrl_anti_CW, SIGNAL(pressed()), this, SLOT(run_anti_CW()));
     QObject::connect(ctrl_anti_CW, SIGNAL(released()), this, SLOT(stop_run()));
     QObject::connect(exit, SIGNAL(clicked(bool)), this, SLOT(myclose()));
+    QObject::connect(back, SIGNAL(triggered(bool)), this, SLOT(myclose()));
     QObject::connect(ctrl_speed, SIGNAL(valueChanged(int)), watch_speed, SLOT(setValue(int)));
     QObject::connect(watch_speed, SIGNAL(valueChanged(int)), ctrl_speed, SLOT(setValue(int)));
     QObject::connect(ctrl_stop, SIGNAL(clicked(bool)), this, SLOT(stop_run()));
