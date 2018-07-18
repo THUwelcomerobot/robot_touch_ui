@@ -23,11 +23,10 @@ void ChatWindow::initwindow()
     support->setStyleSheet("background-repeat:no-repeat; background-position:center;"
                            "background-image:url(:/image/image/chat_support.png);");
     support_text = new QLabel(this);
-    support_text->setGeometry(this->width()/2-380, this->height()/2+150, 760, 100);
+    support_text->setGeometry(this->width()/2-380, this->height()/2+350, 760, 100);
     support_text->setStyleSheet("background-repeat:no-repeat; background-position:center;"
                                 "background-image:url(:/image/image/chat_support_text.png);");
 }
-
 
 void ChatWindow::openwindow()
 {

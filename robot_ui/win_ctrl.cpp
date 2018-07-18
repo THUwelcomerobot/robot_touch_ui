@@ -182,13 +182,18 @@ CtrlDialog::~CtrlDialog()
 
 void CtrlDialog::initwindow()
 {
+    QPixmap back_image = QPixmap(":/image/image/background.png").scaled(this->size());
+    QPalette palette(this->palette());
+    palette.setBrush(QPalette::Background, QBrush(back_image));
+    this->setPalette(palette);
+
     js_ctrl = new QPushButton(this);
-    js_ctrl->setGeometry(this->width()/2-150, this->height()/2-100, 300, 100);
+    js_ctrl->setGeometry(this->width()/2-225, this->height()/2-150, 450, 150);
     js_ctrl->setStyleSheet(QString("QPushButton{border-image:url(:/image/image/icon_js_ctrl.png);}"
                                  "QPushButton:hover{border-image:url(:/image/image/icon_js_hover.png);}"
                                  "QPushButton:pressed{border-image:url(:/image/image/icon_js_pressed.png);}"));
     scr_ctrl = new QPushButton(this);
-    scr_ctrl->setGeometry(this->width()/2-150, this->height()/2+50, 300, 100);
+    scr_ctrl->setGeometry(this->width()/2-225, this->height()/2+75, 450, 150);
     scr_ctrl->setStyleSheet(QString("QPushButton{border-image:url(:/image/image/icon_scr_ctrl.png);}"
                                     "QPushButton:hover{border-image:url(:/image/image/icon_scr_hover.png);}"
                                     "QPushButton:pressed{border-image:url(:/image/image/icon_scr_pressed.png);}"));

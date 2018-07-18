@@ -11,7 +11,7 @@ class ChatWindow : public BaseWindow
 public:
     QLabel *support;
     QLabel *support_text;
-    ChatWindow(int Width = 1000, int Height = 800, QWidget *parent = 0);
+    ChatWindow(int Width = 1500, int Height = 1200, QWidget *parent = 0);
     ~ChatWindow();
     void initwindow();
 
