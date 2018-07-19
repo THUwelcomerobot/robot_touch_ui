@@ -93,17 +93,17 @@ void CtrlWindow::initwindow()
     exit->setStyleSheet(QString(ctrl_button_style).append("QPushButton{border-radius:40px;"
                                                           "font-size:25px;}"));
     QObject::connect(ctrl_down, SIGNAL(pressed()), this, SLOT(run_down()));
-    QObject::connect(ctrl_down, SIGNAL(released()), this, SLOT(stop_run()));
+//    QObject::connect(ctrl_down, SIGNAL(released()), this, SLOT(stop_run()));
     QObject::connect(ctrl_up, SIGNAL(pressed()), this, SLOT(run_up()));
-    QObject::connect(ctrl_up, SIGNAL(released()), this, SLOT(stop_run()));
+//    QObject::connect(ctrl_up, SIGNAL(released()), this, SLOT(stop_run()));
     QObject::connect(ctrl_left, SIGNAL(pressed()), this, SLOT(run_left()));
-    QObject::connect(ctrl_left, SIGNAL(released()), this, SLOT(stop_run()));
+//    QObject::connect(ctrl_left, SIGNAL(released()), this, SLOT(stop_run()));
     QObject::connect(ctrl_right, SIGNAL(pressed()), this, SLOT(run_right()));
-    QObject::connect(ctrl_right, SIGNAL(released()), this, SLOT(stop_run()));
+//    QObject::connect(ctrl_right, SIGNAL(released()), this, SLOT(stop_run()));
     QObject::connect(ctrl_CW, SIGNAL(pressed()), this, SLOT(run_CW()));
-    QObject::connect(ctrl_CW, SIGNAL(released()), this, SLOT(stop_run()));
+//    QObject::connect(ctrl_CW, SIGNAL(released()), this, SLOT(stop_run()));
     QObject::connect(ctrl_anti_CW, SIGNAL(pressed()), this, SLOT(run_anti_CW()));
-    QObject::connect(ctrl_anti_CW, SIGNAL(released()), this, SLOT(stop_run()));
+//    QObject::connect(ctrl_anti_CW, SIGNAL(released()), this, SLOT(stop_run()));
     QObject::connect(exit, SIGNAL(clicked(bool)), this, SLOT(myclose()));
     QObject::connect(back, SIGNAL(triggered(bool)), this, SLOT(myclose()));
     QObject::connect(ctrl_speed, SIGNAL(valueChanged(int)), watch_speed, SLOT(setValue(int)));
@@ -120,62 +120,50 @@ void CtrlWindow::openwindow()
 }
 void CtrlWindow::run_down()
 {
-    QString a="gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub -r 1  /cmd_vel geometry_msgs/Twist '[-";
+    QString a="gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[-";
     QString b = ",0.0,0.0]' '[0.0,0.0,0.0]';bash'";
-    system((a+QString::number(watch_speed->value()*0.002)+b).toStdString().c_str());
-//    Sleep(2);
-//    system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub -r 1  /cmd_vel geometry_msgs/Twist '[-0.0,0.0,0.0]' '[0.0,0.0,0.0]';bash'");
-
+     system((a+QString::number(watch_speed->value()*0.002)+b).toStdString().c_str());
 }
 
 void CtrlWindow::run_left()
 {
-    QString a = "gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub -r 1  /cmd_vel geometry_msgs/Twist '[-0.0,";
+    QString a = "gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[-0.0,";
     QString b = ",0.0]' '[0.0,0.0,0.0]';bash'";
     system((a+QString::number(watch_speed->value()*0.002)+b).toStdString().c_str());
-//Sleep(2);
-//    system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub -r 1  /cmd_vel geometry_msgs/Twist '[-0.0,0.0,0.0]' '[0.0,0.0,0.0]';bash'");
 }
 
 void CtrlWindow::run_right()
 {
-    QString a = "gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub -r 1  /cmd_vel geometry_msgs/Twist '[-0.0,-";
+    QString a = "gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[-0.0,-";
     QString b = ",0.0]' '[0.0,0.0,0.0]';bash'";
     system((a+QString::number(watch_speed->value()*0.002)+b).toStdString().c_str());
-//Sleep(2);
-//    system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub -r 1  /cmd_vel geometry_msgs/Twist '[-0.0,0.0,0.0]' '[0.0,0.0,0.0]';bash'");
 }
 
 void CtrlWindow::run_up()
 {
-    QString a ="gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub -r 1  /cmd_vel geometry_msgs/Twist '[";
+    QString a ="gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[";
     QString b = ",0.0,0.0]' '[0.0,0.0,0.0]';bash'";
     system((a+QString::number(watch_speed->value()*0.002)+b).toStdString().c_str());
-//Sleep(2);
-//    system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub -r 1  /cmd_vel geometry_msgs/Twist '[-0.0,0.0,0.0]' '[0.0,0.0,0.0]';bash'");
 }
 
 void CtrlWindow::run_CW()
 {
-    QString a ="gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub -r 1  /cmd_vel geometry_msgs/Twist '[0.0,0.0,0.0]' '[0.0,0.0,-";
+    QString a ="gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[0.0,0.0,0.0]' '[0.0,0.0,-";
     QString b ="]';bash'";
     system((a+QString::number(watch_speed->value()*0.002)+b).toStdString().c_str());
-//Sleep(2);
-//    system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub -r 1  /cmd_vel geometry_msgs/Twist '[-0.0,0.0,0.0]' '[0.0,0.0,0.0]';bash'");
 }
 
 void CtrlWindow::run_anti_CW()
 {
-    QString a ="gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub -r 1  /cmd_vel geometry_msgs/Twist '[0.0,0.0,0.0]' '[0.0,0.0,";
+    QString a ="gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[0.0,0.0,0.0]' '[0.0,0.0,";
     QString b = "]';bash'";
-    system((a+QString::number(watch_speed->value()*0.002)+b).toStdString().c_str());
-//Sleep(2);
-//    system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub -r 1  /cmd_vel geometry_msgs/Twist '[-0.0,0.0,0.0]' '[0.0,0.0,0.0]';bash'");
+      system((a+QString::number(watch_speed->value()*0.002)+b).toStdString().c_str());
 }
+
 
 void CtrlWindow::stop_run()
 {
-    system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub -r 1  /cmd_vel geometry_msgs/Twist '[-0.0,0.0,0.0]' '[0.0,0.0,0.0]';bash'");
+    system("gnome-terminal -x bash -c 'source /opt/ros/indigo/setup.bash;source ~/catkin_ws/devel/setup.bash;pkill -2 rostopic;rostopic pub /cmd_vel geometry_msgs/Twist '[-0.0,0.0,0.0]' '[0.0,0.0,0.0]';bash'");
 }
 
 void CtrlWindow::myclose()
