@@ -3,7 +3,7 @@
 #include <QDebug>
 #include <QTextCodec>
 
-QString button_style = "QPushButton{border-radius:100px; background-repeat:no-repeat; background-position:center;}"
+QString button_style = "QPushButton{border-radius:150px; background-repeat:no-repeat; background-position:center;}"
                        "QPushButton:hover{background-color:rgb(225,245,255);}"
                        "QPushButton:pressed{background-color:rgb(210,240,255);}";
 
@@ -26,27 +26,27 @@ void MainWindow::initwindow()
     this->setPalette(palette);
 
     person_icon = new QLabel(this);
-    person_icon->setGeometry(250, 100, 60, 60);
+    person_icon->setGeometry(375, 150, 90, 90);
     person_icon->setStyleSheet(QString("QLabel{border-image:url(:/image/image/icon_person.png)}"));
     person_name = new QLabel(this);
-    person_name->setGeometry(320, 100, 400, 60);
+    person_name->setGeometry(480, 150, 600, 90);
     person_name->setText(tr("欢迎您，"));
     person_name->setStyleSheet("QLabel{font-size:28px;}");
 
     vel_ctrl = new QPushButton(this);
-    vel_ctrl->setGeometry(40, 200, 200, 200);
+    vel_ctrl->setGeometry(60, 300, 300, 300);
     vel_ctrl->setStyleSheet(QString(button_style).append("QPushButton{background-image:"
                                                          "url(:/image/image/icon_ctrl.png);}"));
     image_handle = new QPushButton(this);
-    image_handle->setGeometry(280, 200, 200, 200);
+    image_handle->setGeometry(420, 300, 300, 300);
     image_handle->setStyleSheet(QString(button_style).append("QPushButton{background-image:"
                                                           "url(:/image/image/icon_image.png);}"));
     robot_chat = new QPushButton(this);
-    robot_chat->setGeometry(520, 200, 200, 200);
+    robot_chat->setGeometry(780, 300, 300, 300);
     robot_chat->setStyleSheet(QString(button_style).append("QPushButton{background-image:"
                                                            "url(:/image/image/icon_chat.png);}"));
     select_func = new QPushButton(this);
-    select_func->setGeometry(760, 200, 200, 200);
+    select_func->setGeometry(1140, 300, 300, 300);
     select_func->setStyleSheet(QString(button_style).append("QPushButton{background-image:"
                                                            "url(:/image/image/icon_func.png);}"));
     QObject::connect(vel_ctrl, SIGNAL(clicked(bool)), this, SLOT(close()));
@@ -55,17 +55,21 @@ void MainWindow::initwindow()
     QObject::connect(select_func, SIGNAL(clicked(bool)), this, SLOT(close()));
 
     label1 = new QLabel(this);
-    label1->setGeometry(40, 420, 200, 50);
-    label1->setStyleSheet(QString("QLabel{background-image:url(:/image/image/text_ctrl.png)}"));
+    label1->setGeometry(60, 630, 300, 100);
+    label1->setStyleSheet(QString("QLabel{background-image:url(:/image/image/text_ctrl.png);"
+                                  "background-repeat:no-repeat; background-position:center;}"));
     label2 = new QLabel(this);
-    label2->setGeometry(280, 420, 200, 50);
-    label2->setStyleSheet(QString("QLabel{background-image:url(:/image/image/text_image.png)}"));
+    label2->setGeometry(430, 630, 300, 100);
+    label2->setStyleSheet(QString("QLabel{background-image:url(:/image/image/text_image.png);"
+                                  "background-repeat:no-repeat; background-position:center;}"));
     label3 = new QLabel(this);
-    label3->setGeometry(520, 420, 200, 50);
-    label3->setStyleSheet(QString("QLabel{background-image:url(:/image/image/text_chat.png)}"));
+    label3->setGeometry(780, 630, 300, 100);
+    label3->setStyleSheet(QString("QLabel{background-image:url(:/image/image/text_chat.png);"
+                                  "background-repeat:no-repeat; background-position:center;}"));
     label4 = new QLabel(this);
-    label4->setGeometry(760, 420, 200, 50);
-    label4->setStyleSheet(QString("QLabel{background-image:url(:/image/image/text_func.png)}"));
+    label4->setGeometry(1140, 630, 300, 100);
+    label4->setStyleSheet(QString("QLabel{background-image:url(:/image/image/text_func.png);"
+                                  "background-repeat:no-repeat; background-position:center;}"));
 }
 
 void MainWindow::openwindow()

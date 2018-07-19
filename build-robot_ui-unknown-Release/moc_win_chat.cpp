@@ -22,7 +22,7 @@ static const uint qt_meta_data_ChatWindow[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       1,   14, // methods
+       2,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -31,12 +31,13 @@ static const uint qt_meta_data_ChatWindow[] = {
 
  // slots: signature, parameters, type, tag, flags
       12,   11,   11,   11, 0x0a,
+      25,   11,   11,   11, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_ChatWindow[] = {
-    "ChatWindow\0\0openwindow()\0"
+    "ChatWindow\0\0openwindow()\0myclose()\0"
 };
 
 void ChatWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -46,6 +47,7 @@ void ChatWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         ChatWindow *_t = static_cast<ChatWindow *>(_o);
         switch (_id) {
         case 0: _t->openwindow(); break;
+        case 1: _t->myclose(); break;
         default: ;
         }
     }
@@ -84,9 +86,9 @@ int ChatWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 2;
     }
     return _id;
 }

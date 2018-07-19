@@ -78,8 +78,8 @@ void ImageWindow::openwindow()
            "cp /home/robot/share/img/1.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;"
            "cp /home/robot/share/img/2.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;"
            "cp /home/robot/share/img/3.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;"
-           "cp /home/robot/share/img/makeup.png /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;"
-           "cp /home/robot/share/img/likely_face.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;bash'&");
+           "cp /home/robot/share/makeup.png /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;"
+           "cp /home/robot/share/likely_face.png /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;bash'&");
 }
 
 void ImageWindow::face1()
@@ -148,7 +148,7 @@ void ImageWindow::face6()
 //    system("gnome-terminal -x bash -c 'cp /home/robot/share/likely_face.jpg /home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/;bash'&");
     //读取良缘照片(资源文件中)
     QPainter painter(image);
-    QString filepath = "/home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/likely_face.jpg";
+    QString filepath = "/home/robot/touchpad_gui/robot_touch_ui/robot_ui/image/likely_face.png";
     QPixmap face_image = QPixmap(filepath).scaled(300, 400);
     image->setPixmap(face_image);
     image->setAlignment(Qt::AlignCenter);

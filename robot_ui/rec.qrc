@@ -37,7 +37,6 @@
         <file>image/3.jpg</file>
         <file>image/1.jpg</file>
         <file>image/makeup.png</file>
-        <file>image/likely_face.jpg</file>
         <file>image/icon_func1.png</file>
         <file>image/icon_func2.png</file>
         <file>image/icon_func2_hover.png</file>
@@ -50,5 +49,6 @@
         <file>image/icon_scr_ctrl.png</file>
         <file>image/icon_scr_hover.png</file>
         <file>image/icon_scr_pressed.png</file>
+        <file>image/likely_face.png</file>
     </qresource>
 </RCC>

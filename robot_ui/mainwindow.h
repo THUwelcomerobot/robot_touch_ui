@@ -21,7 +21,7 @@ public:
     QLabel *person_icon;
     QLabel *person_name;
 
-    MainWindow(int Width = 800, int Height = 600, QWidget *parent = 0);
+    MainWindow(int Width = 1600, int Height = 1200, QWidget *parent = 0);
     ~MainWindow();
     void initwindow();
 
