@@ -1,0 +1,77 @@
+robot_ui/
+├── basewindow.cpp
+├── basewindow.h
+├── image
+│   ├── 0.jpg
+│   ├── 1.jpg
+│   ├── 2.jpg
+│   ├── 3.jpg
+│   ├── anti_CW.png
+│   ├── background.png
+│   ├── chat_support.png
+│   ├── chat_support_text.png
+│   ├── chat__text.png
+│   ├── ctrl_icon_border.png
+│   ├── CW.png
+│   ├── icon_chat.png
+│   ├── icon_ctrl.png
+│   ├── icon_face1.png
+│   ├── icon_face2.png
+│   ├── icon_face3.png
+│   ├── icon_face4.png
+│   ├── icon_face5.png
+│   ├── icon_face6.png
+│   ├── icon_func1_hover.png
+│   ├── icon_func1.png
+│   ├── icon_func1_pressed.png
+│   ├── icon_func2_hover.png
+│   ├── icon_func2.png
+│   ├── icon_func2_pressed.png
+│   ├── icon_func.png
+│   ├── icon_image.png
+│   ├── icon_js_ctrl.png
+│   ├── icon_js_hover.png
+│   ├── icon_js_pressed.png
+│   ├── icon_person.png
+│   ├── icon_scr_ctrl.png
+│   ├── icon_scr_hover.png
+│   ├── icon_scr_pressed.png
+│   ├── info_icon.png
+│   ├── info_text.png
+│   ├── likely_face.png
+│   ├── makeup.png
+│   ├── slider_background.png
+│   ├── slider_handle.png
+│   ├── slider_handle_pressed.png
+│   ├── start.png
+│   ├── start_pressed.png
+│   ├── text_chat.png
+│   ├── text_ctrl.png
+│   ├── text_func.png
+│   ├── text_image_func1.png
+│   ├── text_image_func2.png
+│   ├── text_image_func3.png
+│   ├── text_image.png
+│   ├── title.png
+│   ├── tool_back.png
+│   └── tool_close.png
+├── main.cpp
+├── mainwindow.cpp
+├── mainwindow.h
+├── rec.qrc
+├── robot_ui.pro
+├── robot_ui.pro.user
+├── robot_ui.pro.user.1469a1e
+├── robot_ui.pro.user.ecfb263
+├── win_chat.cpp
+├── win_chat.h
+├── win_ctrl.cpp
+├── win_ctrl.h
+├── win_func.cpp
+├── win_func.h
+├── win_image.cpp
+├── win_image.h
+├── win_start.cpp
+└── win_start.h
+
+1 directory, 73 files
