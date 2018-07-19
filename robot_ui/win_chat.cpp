@@ -18,16 +18,26 @@ void ChatWindow::initwindow()
     palette.setBrush(QPalette::Background, QBrush(back_image));
     this->setPalette(palette);
     QObject::connect(back, SIGNAL(triggered(bool)), this, SLOT(myclose()));
+
+    chat_text = new QLabel(this);
+    chat_text->setGeometry(this->width()/2-220, 300, 440, 100);
+    chat_text->setStyleSheet(""
+                             "background-image:url(:/image/image/chat__text.png);");
+    anime = new QPropertyAnimation(chat_text, "size");
+    anime->setLoopCount(-1);
+    anime->setDuration(2000);
+    anime->setStartValue(QSize(chat_text->width()-160, chat_text->height()));
+    anime->setEndValue(QSize(chat_text->size()));
+    anime->start();
     support = new QLabel(this);
     support->setGeometry(this->width()/2-340, this->height()/2-100, 680, 200);
     support->setStyleSheet("background-repeat:no-repeat; background-position:center;"
                            "background-image:url(:/image/image/chat_support.png);");
     support_text = new QLabel(this);
-    support_text->setGeometry(this->width()/2-380, this->height()/2+150, 760, 100);
+    support_text->setGeometry(this->width()/2-380, this->height()/2+350, 760, 100);
     support_text->setStyleSheet("background-repeat:no-repeat; background-position:center;"
                                 "background-image:url(:/image/image/chat_support_text.png);");
 }
-
 
 void ChatWindow::openwindow()
 {

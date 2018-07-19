@@ -20,8 +20,11 @@ public:
     QLabel *label4;
     QLabel *person_icon;
     QLabel *person_name;
+    QLabel *info_icon;
+    QLabel *info_text;
 
     MainWindow(int Width = 1600, int Height = 1200, QWidget *parent = 0);
+
     ~MainWindow();
     void initwindow();
 

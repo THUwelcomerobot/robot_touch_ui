@@ -50,5 +50,11 @@
         <file>image/icon_scr_hover.png</file>
         <file>image/icon_scr_pressed.png</file>
         <file>image/likely_face.png</file>
+<<<<<<< HEAD
+=======
+        <file>image/info_icon.png</file>
+        <file>image/info_text.png</file>
+        <file>image/chat__text.png</file>
+>>>>>>> 768340062e485552a70c4895aa541a4cc8965dfa
     </qresource>
 </RCC>

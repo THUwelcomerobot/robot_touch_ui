@@ -33,6 +33,15 @@ void MainWindow::initwindow()
     person_name->setText(tr("欢迎您，"));
     person_name->setStyleSheet("QLabel{font-size:28px;}");
 
+    info_icon = new QLabel(this);
+    info_icon->setGeometry(this->width()-520, this->height()-100, 100, 100);
+    info_icon->setStyleSheet(QString("QLabel{background-image:url(:/image/image/info_icon.png);"
+                                     "background-repeat:no-repeat; background-position:center;}"));
+    info_text = new QLabel(this);
+    info_text->setGeometry(this->width()-500, this->height()-80, 500, 60);
+    info_text->setStyleSheet(QString("QLabel{background-image:url(:/image/image/info_text.png);"
+                                     "background-repeat:no-repeat; background-position:center;}"));
+
     vel_ctrl = new QPushButton(this);
     vel_ctrl->setGeometry(60, 300, 300, 300);
     vel_ctrl->setStyleSheet(QString(button_style).append("QPushButton{background-image:"
@@ -47,6 +56,7 @@ void MainWindow::initwindow()
                                                            "url(:/image/image/icon_chat.png);}"));
     select_func = new QPushButton(this);
     select_func->setGeometry(1140, 300, 300, 300);
+
     select_func->setStyleSheet(QString(button_style).append("QPushButton{background-image:"
                                                            "url(:/image/image/icon_func.png);}"));
     QObject::connect(vel_ctrl, SIGNAL(clicked(bool)), this, SLOT(close()));
@@ -68,6 +78,7 @@ void MainWindow::initwindow()
                                   "background-repeat:no-repeat; background-position:center;}"));
     label4 = new QLabel(this);
     label4->setGeometry(1140, 630, 300, 100);
+
     label4->setStyleSheet(QString("QLabel{background-image:url(:/image/image/text_func.png);"
                                   "background-repeat:no-repeat; background-position:center;}"));
 }

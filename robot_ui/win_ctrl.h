@@ -15,7 +15,7 @@ public:
     QPushButton *js_ctrl;
     QPushButton *scr_ctrl;
 
-    CtrlDialog(int Width = 400, int Height = 400, QWidget *parent = 0);
+    CtrlDialog(int Width = 600, int Height = 600, QWidget *parent = 0);
     ~CtrlDialog();
     void initwindow();
 public slots:
